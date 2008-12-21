@@ -1,12 +1,15 @@
 DelegateX
-=========
+==============
 
-As found on http://spongetech.wordpress.com/2008/02/12/delegate-to-the-giraffe/
+This is built upon the delegate_x code from http://spongetech.wordpress.com/2008/02/12/delegate-to-the-giraffe/.
 
+I only added support for easy delegation of attribute writers without the need to explicitly specify them.
 
 Example
 =======
 
-Example goes here.
+delegate_x %w(login password password_confirmation email), :to => '(self.user ||= User.new)', :include_writers => true
+
+delegate_x %w(password password_confirmation email), :methods => { :login => :username }, :to => '(self.user ||= User.new)', :include_writers => true
 
 
