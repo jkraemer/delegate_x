@@ -10,7 +10,7 @@ class Module
     end
 
     include_writers = options.delete(:include_writers)
-    methods.concat(options.keys)
+    methods.concat(options.keys).flatten!
 
     unless methods.any?
       raise ArgumentError, "No delegated methods specified. Specify :method => :target_method or list methods"
